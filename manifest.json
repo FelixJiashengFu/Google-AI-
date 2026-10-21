@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "dadada",
+  "version": "1.1.0",
+  "description": "dadada：任意网页悬浮讲解助手，支持本页总结、划词解释、页面问答，以及截图粘贴到 ChatGPT。",
+  "minimum_chrome_version": "100",
+  "permissions": [
+    "storage",
+    "contextMenus",
+    "scripting",
+    "clipboardWrite",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_title": "dadada",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "options_page": "options.html"
+}

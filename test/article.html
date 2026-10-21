@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>为什么 RAG 的上限在检索，而不是模型 — 示例文章</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #f4f2ec;
+      color: #23262d;
+      font: 17px/1.85 -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", serif;
+    }
+    .nav {
+      height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      border-bottom: 1px solid #ddd8cb;
+      background: rgba(255, 255, 255, .6);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+    }
+    .nav .brand { font-weight: 700; letter-spacing: .5px; }
+    .nav .links { display: flex; gap: 22px; font-size: 13px; color: #6c6f77; }
+    .article { max-width: 720px; margin: 0 auto; padding: 56px 24px 90px; }
+    .kicker {
+      font: 600 11px/1 -apple-system, sans-serif;
+      letter-spacing: 2.4px;
+      color: #8a6d3b;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    h1 { font-size: 38px; line-height: 1.25; margin: 0 0 18px; letter-spacing: -.5px; }
+    .byline { font: 13px/1.6 -apple-system, sans-serif; color: #7a7d86; margin-bottom: 34px; }
+    h2 { font-size: 24px; margin: 40px 0 12px; letter-spacing: -.2px; }
+    p { margin: 0 0 20px; }
+    .lead { font-size: 19px; color: #3b3f48; }
+    blockquote {
+      margin: 28px 0;
+      padding: 6px 0 6px 20px;
+      border-left: 3px solid #b99a5c;
+      color: #555a64;
+      font-style: italic;
+    }
+    ul { margin: 0 0 22px; padding-left: 24px; }
+    li { margin: 8px 0; }
+    code {
+      font: 14px/1.5 ui-monospace, Menlo, monospace;
+      background: #e9e5da;
+      padding: 2px 6px;
+      border-radius: 5px;
+    }
+    .footnote { font: 13px/1.7 -apple-system, sans-serif; color: #7a7d86; margin-top: 40px; border-top: 1px solid #ddd8cb; padding-top: 16px; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="brand">示例周刊</div>
+    <div class="links"><span>技术</span><span>产品</span><span>关于</span></div>
+  </nav>
+  <article class="article">
+    <div class="kicker">Applied AI · 实践</div>
+    <h1>为什么 RAG 的上限在检索，而不是模型</h1>
+    <div class="byline">2026 年 10 月 12 日 · 约 6 分钟阅读</div>
+    <p class="lead">很多团队在搭建知识库问答时，第一反应是换更大的模型。但实际效果往往卡在另一个地方：系统根本没有把正确的文档找出来。</p>
+    <h2>先把片段找对</h2>
+    <p>检索增强生成（RAG）的核心链路只有三步：把文档切块并向量化，根据问题检索相关片段，再把片段和问题一起交给模型。模型只能看到被检索出来的内容，漏掉的文档它无从知晓。</p>
+    <p>这意味着，召回率决定了系统的天花板。如果相关文档没有被召回，再强的模型也只能基于错误或不完整的信息作答，甚至更自信地编造。</p>
+    <blockquote>先看漏掉了哪些文档，再考虑换模型。前者通常是数量级的差异，后者只是边际改善。</blockquote>
+    <h2>切块比模型更值得调</h2>
+    <p>切块大小会直接影响嵌入质量和上下文完整度。切得太碎，单块缺少语义；切得太大，噪声稀释了信号，还会挤占上下文窗口。实践里，<code>600–900</code> 个中文字符、保留标题层级、按段落边界切分，是一个比较稳的起点。</p>
+    <ul>
+      <li>保留文档标题和章节路径，作为每个片段的上下文前缀。</li>
+      <li>表格和代码单独切块，避免和叙述文字混在一起。</li>
+      <li>为片段记录来源和更新时间，回答时才能给出引用。</li>
+    </ul>
+    <h2>用真实问题做回归</h2>
+    <p>没有评估集，所有优化都只能凭感觉。准备 50 到 100 条真实用户问题，标注答案所在的文档，每次改动后看召回率、答案正确率和引用命中率的变化。</p>
+    <p>当评估集稳定之后，再谈提示词、重排模型和生成模型的选择，才有可能得到可复现的提升。</p>
+    <div class="footnote">本文为扩展预览用的示例内容，不包含真实数据。</div>
+  </article>
+  <script src="stub.js?v=4"></script>
+  <script src="../content.js?v=5"></script>
+</body>
+</html>

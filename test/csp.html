@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: blob:; style-src 'none'">
+  <title>严格 CSP 页面 · 扩展样式测试</title>
+</head>
+<body>
+  <article class="article">
+    <h1>严格 CSP 页面</h1>
+    <p>这个页面禁止一切内联样式，用来验证悬浮面板的样式不依赖页面的 style-src 许可。如果面板仍然有正确的深色背景、圆角和排版，说明样式注入方式在严格 CSP 下也能工作。</p>
+    <p>页面本身没有写任何 CSS，因此如果面板样式丢失，会看到完全无样式的按钮和文字堆叠。</p>
+  </article>
+  <script src="stub.js"></script>
+  <script src="../content.js"></script>
+</body>
+</html>

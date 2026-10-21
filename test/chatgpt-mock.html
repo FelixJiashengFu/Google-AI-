@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChatGPT 模拟页 · 截图粘贴测试</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: #212121;
+      color: #ececec;
+      font: 14px/1.6 -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", sans-serif;
+    }
+    header {
+      height: 56px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+      font-weight: 600;
+      font-size: 15px;
+    }
+    header .tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .5px;
+      color: #0f0f0f;
+      background: #19c37d;
+      border-radius: 999px;
+      padding: 2px 7px;
+    }
+    main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 28px 20px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+    }
+    .msg {
+      max-width: 640px;
+      width: 100%;
+      padding: 11px 15px;
+      border-radius: 14px;
+      font-size: 13.5px;
+      line-height: 1.65;
+    }
+    .msg.user { background: #303030; }
+    .msg.bot { background: transparent; color: #c9c9c9; }
+    form {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 10px 14px 14px;
+    }
+    #attachments { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+    #attachments img {
+      width: 120px;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      display: block;
+    }
+    .row {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      background: #303030;
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 18px;
+      padding: 8px 8px 8px 14px;
+    }
+    #prompt-textarea {
+      flex: 1;
+      min-height: 24px;
+      max-height: 120px;
+      overflow-y: auto;
+      outline: none;
+      font-size: 14px;
+      line-height: 1.55;
+      color: #ececec;
+      padding: 5px 0;
+    }
+    #prompt-textarea:empty::before {
+      content: attr(data-placeholder);
+      color: #8e8e8e;
+    }
+    .send {
+      width: 32px;
+      height: 32px;
+      border: 0;
+      border-radius: 50%;
+      background: #ececec;
+      color: #212121;
+      font-size: 15px;
+      flex: none;
+    }
+    #status {
+      text-align: center;
+      color: #8e8e8e;
+      font-size: 11px;
+      padding-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>ChatGPT <span class="tag">MOCK</span></header>
+  <main>
+    <div class="msg user">帮我看一下这张截图里有什么</div>
+    <div class="msg bot">把截图贴进下面的输入框，我会把它作为附件读取。这个页面用于验证扩展的截图与自动粘贴流程。</div>
+  </main>
+  <form id="composer">
+    <div id="attachments"></div>
+    <div class="row">
+      <div id="prompt-textarea" contenteditable="true" data-placeholder="给 ChatGPT 发送消息"></div>
+      <button class="send" type="button">↑</button>
+    </div>
+  </form>
+  <div id="status">attachments: 0</div>
+  <script>
+    const attachments = document.getElementById('attachments');
+    const status = document.getElementById('status');
+    const input = document.getElementById('prompt-textarea');
+
+    function addFiles(files) {
+      for (const file of files) {
+        if (!file.type || !file.type.startsWith('image/')) continue;
+        const image = document.createElement('img');
+        image.alt = 'uploaded attachment';
+        image.dataset.file = file.name;
+        image.src = URL.createObjectURL(file);
+        image.onload = () => {
+          image.dataset.width = image.naturalWidth;
+          image.dataset.height = image.naturalHeight;
+        };
+        attachments.appendChild(image);
+      }
+      status.textContent = 'attachments: ' + attachments.children.length;
+    }
+
+    input.addEventListener('paste', (event) => {
+      event.preventDefault();
+      addFiles([...(event.clipboardData ? event.clipboardData.files : [])]);
+    });
+    input.addEventListener('dragover', (event) => event.preventDefault());
+    input.addEventListener('drop', (event) => {
+      event.preventDefault();
+      addFiles([...(event.dataTransfer ? event.dataTransfer.files : [])]);
+    });
+  </script>
+</body>
+</html>

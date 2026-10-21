@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RAG 检索效果不好怎么办 - Google 搜索</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #fff;
+      color: #202124;
+      font: 14px/1.58 arial, sans-serif;
+    }
+    .top {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      padding: 18px 28px 10px;
+      border-bottom: 1px solid #ebebeb;
+    }
+    .glogo {
+      font: 700 26px/1 -apple-system, "Product Sans", arial, sans-serif;
+      letter-spacing: -1px;
+      color: #4285f4;
+    }
+    .glogo span:nth-child(2) { color: #ea4335; }
+    .glogo span:nth-child(3) { color: #fbbc05; }
+    .glogo span:nth-child(4) { color: #34a853; }
+    .searchbox {
+      flex: 1;
+      max-width: 620px;
+      height: 40px;
+      border: 1px solid #dfe1e5;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      color: #4d5156;
+      box-shadow: 0 1px 3px rgba(32, 33, 36, .08);
+    }
+    .tabs { padding: 0 28px; display: flex; gap: 24px; font-size: 13px; color: #5f6368; border-bottom: 1px solid #ebebeb; }
+    .tabs .active { color: #1a73e8; border-bottom: 2px solid #1a73e8; padding: 10px 0 9px; }
+    .tabs span { padding: 10px 0; }
+    .result-count { padding: 10px 28px 2px; color: #70757a; font-size: 12px; }
+    #rso { max-width: 680px; padding: 4px 28px 40px; }
+    .result { margin: 20px 0 26px; }
+    .result h3 { margin: 0 0 3px; font-size: 20px; font-weight: 400; line-height: 1.3; }
+    .result h3 a { color: #1a0dab; text-decoration: none; }
+    .result h3 a:hover { text-decoration: underline; }
+    .domain { color: #202124; font-size: 12px; margin-bottom: 3px; }
+    .snippet { color: #4d5156; font-size: 14px; }
+    .snippet b { color: #202124; }
+    .related { padding: 0 28px; margin-bottom: 24px; }
+    .related h2 { font-size: 18px; font-weight: 400; margin: 0 0 10px; }
+    .related a { display: block; color: #1a0dab; text-decoration: none; padding: 4px 0; }
+    .related a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body data-google="1">
+  <div class="top">
+    <div class="glogo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+    <div class="searchbox">RAG 检索效果不好怎么办</div>
+  </div>
+  <div class="tabs"><span class="active">全部</span><span>图片</span><span>视频</span><span>新闻</span><span>更多</span></div>
+  <div class="result-count">找到约 126,000 条结果（用时 0.42 秒）</div>
+  <div id="rso">
+    <div class="result" data-hveid="CAEQAQ">
+      <h3><a href="https://example.com/rag-recall-guide">RAG 检索召回率低？先检查这五个环节</a></h3>
+      <div class="domain">example.com › blog › rag-recall-guide</div>
+      <div class="snippet"><b>检索效果</b>差通常不是模型问题：文档切块过大、嵌入模型与语料不匹配、缺少重排、top-k 设置过小、以及没有评估集，都会让召回率明显下降。文章给出了一套逐项排查清单。</div>
+    </div>
+    <div class="result" data-hveid="CAEQAw">
+      <h3><a href="https://example.org/chunking-strategies">切块策略对 RAG 召回的影响：600 字还是 1500 字？</a></h3>
+      <div class="domain">example.org › notes › chunking-strategies</div>
+      <div class="snippet">作者在三个中文知识库上对比了不同切块大小与重叠窗口，发现 <b>600–900 字</b>、保留章节标题的切法在召回率和答案正确率上都更稳定。过大的切块会稀释语义信号。</div>
+    </div>
+    <div class="result" data-hveid="CAEQBQ">
+      <h3><a href="https://example.net/rag-evaluation">如何为 RAG 建立一套可用的评估集</a></h3>
+      <div class="domain">example.net › guides › rag-evaluation</div>
+      <div class="snippet">从真实用户问题里抽样 50–100 条，标注答案所在文档，分别统计召回率、引用命中率和答案正确率。没有评估集，调参与换模型都无法判断是否真的变好。</div>
+    </div>
+    <div class="result" data-hveid="CAEQBw">
+      <h3><a href="https://example.com/rerank-model">重排模型值得上吗？RAG 第二阶段检索实践</a></h3>
+      <div class="domain">example.com › blog › rerank-model</div>
+      <div class="snippet">先用向量检索召回 50 条，再用轻量重排模型取前 5 条，通常能显著提升答案相关性。文章对比了三种重排方案的延迟与成本。</div>
+    </div>
+  </div>
+  <div class="related">
+    <h2>相关搜索</h2>
+    <a href="#">rag 检索不到相关内容</a>
+    <a href="#">rag 向量数据库 选型</a>
+  </div>
+  <script src="stub.js"></script>
+  <script src="../content.js"></script>
+</body>
+</html>

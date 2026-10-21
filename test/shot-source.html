@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>截图源页面 · 页面讲解</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font: 16px/1.7 -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+      color: #1f2329;
+      background:
+        radial-gradient(700px 500px at 10% 10%, #ffe8d6, transparent 60%),
+        radial-gradient(700px 500px at 90% 20%, #dce9ff, transparent 60%),
+        linear-gradient(160deg, #f7f4ed, #eef4f8 55%, #f9eef1);
+    }
+    header {
+      padding: 34px 56px 18px;
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+    header h1 { margin: 0; font-size: 30px; letter-spacing: -.6px; }
+    header span { color: #7a7f88; font-size: 13px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      padding: 20px 56px 48px;
+    }
+    .card {
+      border-radius: 20px;
+      padding: 22px 24px;
+      min-height: 190px;
+      box-shadow: 0 14px 34px rgba(31, 35, 41, .12);
+      color: #fff;
+    }
+    .card h2 { margin: 0 0 8px; font-size: 19px; }
+    .card p { margin: 0; font-size: 13px; opacity: .9; }
+    .c1 { background: linear-gradient(145deg, #6f5cff, #4636d8); }
+    .c2 { background: linear-gradient(145deg, #12b8a6, #0d7f86); }
+    .c3 { background: linear-gradient(145deg, #ff8a5b, #e8543f); }
+    .band {
+      margin: 0 56px;
+      padding: 26px 28px;
+      border-radius: 22px;
+      background: #fff;
+      border: 1px solid #e8e4da;
+      box-shadow: 0 18px 40px rgba(31, 35, 41, .08);
+    }
+    .band h2 { margin: 0 0 10px; font-size: 23px; }
+    .band p { margin: 0 0 8px; color: #50555f; }
+    .pill { display: inline-block; padding: 3px 10px; border-radius: 999px; background: #efedff; color: #5b4cf0; font-size: 12px; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>截图区域测试页</h1>
+    <span>用于验证悬浮截图与 ChatGPT 粘贴</span>
+  </header>
+  <div class="grid">
+    <div class="card c1">
+      <h2>设计评审</h2>
+      <p>把界面截图发给 ChatGPT，让它先看布局和层级，再讨论配色与字重。</p>
+    </div>
+    <div class="card c2">
+      <h2>报错排查</h2>
+      <p>截取控制台或终端报错，自动粘贴到对话里，省去复制粘贴的步骤。</p>
+    </div>
+    <div class="card c3">
+      <h2>资料摘录</h2>
+      <p>框选网页里的关键段落，作为图片附件保留原始排版和标注。</p>
+    </div>
+  </div>
+  <section class="band">
+    <span class="pill">使用提示</span>
+    <h2>双击两下空格，然后拖动选择区域</h2>
+    <p>截图会先复制到剪贴板，再自动切换到你已打开的 ChatGPT 标签页并尝试粘贴。</p>
+    <p>如果输入框没有出现图片，直接按 ⌘V 或 Ctrl+V 即可。</p>
+    <p>Esc 可以取消当前截图。Alt+Shift+S 随时可以开始截图，即使正在输入框里打字。</p>
+  </section>
+</body>
+</html>
