@@ -4,6 +4,12 @@
 
 它运行在 Chrome 里，不依赖 ZCode 进程。讲解能力来自你填写的 OpenAI 兼容接口；不填也能使用本地摘要、页面结构、关键词和「复制正文」。
 
+## 下载
+
+**[⬇ 下载完整扩展包 dadada.zip](https://github.com/FelixJiashengFu/dadada/releases/latest/download/dadada.zip)** · [查看版本](https://github.com/FelixJiashengFu/dadada/releases/latest)
+
+下载后解压，就能获得完整的 `dadada` 文件夹。无需 Git、Node.js 或编译，也不用逐个下载文件。安装方法见下方「安装」，压缩包内也附有 `INSTALL.txt`。
+
 ## 功能
 
 - **悬浮球 + 面板**：可拖动，位置会记住；`Alt+Shift+E`（macOS 为 `⌥⇧E`）开关面板。
@@ -17,12 +23,29 @@
 
 ## 安装
 
-1. 打开 Chrome，地址栏输入 `chrome://extensions`。
-2. 打开右上角的「开发者模式」。
-3. 点「加载已解压的扩展程序」，选择本目录（包含 `manifest.json` 的 `dadada` 文件夹）。
-4. 建议把「dadada」固定到工具栏；安装后刷新已经打开的网页。
+1. 点击上方的 **「下载完整扩展包 dadada.zip」**，保存到电脑。
+2. **先解压 ZIP**：Windows 右键压缩包 →「全部解压」；macOS 双击压缩包。把解压后的 `dadada` 文件夹放在一个固定位置。
+3. 在 Chrome 地址栏输入 `chrome://extensions`，打开右上角的 **「开发者模式」**。
+4. 点 **「加载已解压的扩展程序」**，选择解压后的 **`dadada` 文件夹**。选中的这一层必须直接包含 `manifest.json`，不要选择 ZIP 文件或 `icons`、`test` 子文件夹。
+5. 出现「dadada」扩展卡片后，把扩展固定到工具栏，并刷新要使用的网页。
 
-Edge 使用 `edge://extensions`，步骤相同。
+```text
+dadada/                 ← 第 4 步选择这一层
+├── manifest.json       ← 这里必须看得到这个文件
+├── background.js
+├── content.js
+├── icons/
+├── INSTALL.txt
+└── ...
+```
+
+安装后请保留这个文件夹；浏览器会继续从中读取扩展文件。这个 ZIP 通过开发者模式加载，不能双击 ZIP 自动安装。
+
+如果通过 GitHub 绿色 **Code → Download ZIP** 下载了整个仓库，解压后选择直接包含 `manifest.json` 的 `dadada-main` 文件夹，也可以安装。
+
+Edge 使用 `edge://extensions`，同样先打开开发者模式，再选择「加载解压缩的扩展」。
+
+参考：[Chrome 官方本地加载扩展说明](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked)。
 
 ## 连接 AI（推荐）
 
