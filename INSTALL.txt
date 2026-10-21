@@ -27,5 +27,5 @@ AI 功能需要在扩展“设置”中填写你自己的接口地址、模型�
 如安装后看不到悬浮球：刷新普通网页；浏览器内部页面和扩展商店不能注入。
 
 完整使用说明：同目录 README.md
-下载与更新：https://github.com/FelixJiashengFu/dadada/releases/latest
+下载与更新：https://github.com/FelixJiashengFu/Google-AI-/releases/latest
 官方加载说明：https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked

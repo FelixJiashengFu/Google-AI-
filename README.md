@@ -6,7 +6,7 @@
 
 ## 下载
 
-**[⬇ 下载完整扩展包 dadada.zip](https://github.com/FelixJiashengFu/dadada/releases/latest/download/dadada.zip)** · [查看版本](https://github.com/FelixJiashengFu/dadada/releases/latest)
+**[⬇ 下载完整扩展包 dadada.zip](https://github.com/FelixJiashengFu/Google-AI-/releases/latest/download/dadada.zip)** · [查看版本](https://github.com/FelixJiashengFu/Google-AI-/releases/latest)
 
 下载后解压，就能获得完整的 `dadada` 文件夹。无需 Git、Node.js 或编译，也不用逐个下载文件。安装方法见下方「安装」，压缩包内也附有 `INSTALL.txt`。
 
@@ -41,7 +41,7 @@ dadada/                 ← 第 4 步选择这一层
 
 安装后请保留这个文件夹；浏览器会继续从中读取扩展文件。这个 ZIP 通过开发者模式加载，不能双击 ZIP 自动安装。
 
-如果通过 GitHub 绿色 **Code → Download ZIP** 下载了整个仓库，解压后选择直接包含 `manifest.json` 的 `dadada-main` 文件夹，也可以安装。
+如果通过 GitHub 绿色 **Code → Download ZIP** 下载了整个仓库，解压后选择直接包含 `manifest.json` 的仓库文件夹，也可以安装。
 
 Edge 使用 `edge://extensions`，同样先打开开发者模式，再选择「加载解压缩的扩展」。
 
